@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html lang="es"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">    
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -27,10 +29,60 @@
                 </button>
                 <div class="collapse navbar-collapse" id="menuPrincipal">
                     <div class="navbar-nav ms-auto">
-                        <a class="nav-link" th:href="@{/masajes}">Tratamientos</a>
-                        <a class="nav-link" th:href="@{/reservas/nueva}">Reservar turno</a>
-                        <a class="nav-link" th:href="@{/login}">Ingresar</a>
-                    <a class="nav-link" th:href="@{/registro}">Crear cuenta</a>
+
+                        <!-- Opciones visibles para todos -->
+                        <a class="nav-link" th:href="@{/masajes}">
+                            Tratamientos
+                        </a>
+
+                        <!-- Opciones exclusivas del cliente autenticado -->
+                        <th:block sec:authorize="hasRole('CLIENTE')">
+
+                            <a class="nav-link" th:href="@{/reservas/nueva}">
+                                Reservar turnos
+                            </a>
+
+                            <a class="nav-link" th:href="@{/reservas/mias}">
+                                Mis turnos
+                            </a>
+
+                        </th:block>
+
+                        <!-- Opciones para visitantes sin sesión -->
+                        <th:block sec:authorize="isAnonymous()">
+
+                            <a class="nav-link" th:href="@{/login}">
+                                Ingresar
+                            </a>
+
+                            <a class="nav-link" th:href="@{/registro}">
+                                Crear cuenta
+                            </a>
+
+                        </th:block>
+                        
+                        <!-- Opcion exclusiva si es un ususario Administrador -->
+                        <th:block sec:authorize="hasRole('ADMIN')">
+
+                            <a class="nav-link" th:href="@{/admin}">
+                                Panel Administrador
+                            </a>
+
+                        </th:block>
+                        
+                        <!-- Cerrar sesión para usuarios autenticados -->
+                        <form sec:authorize="isAuthenticated()"
+                              th:action="@{/logout}"
+                              method="post"
+                              class="d-inline">
+
+                            <button type="submit"
+                                    class="nav-link border-0 bg-transparent">
+                                Cerrar sesión
+                            </button>
+
+                        </form>
+
                     </div>
                 </div>
             </div>
