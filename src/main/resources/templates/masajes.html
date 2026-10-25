@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Tratamientos | MEG-Spa</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Nunito+Sans:wght@400;600;700&display=swap"
+              rel="stylesheet">
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+              rel="stylesheet">
+        <link rel="stylesheet" th:href="@{/css/estilos.css}">
+    </head>
+    <body>
+
+        <nav class="navbar navbar-expand-lg navbar-spa sticky-top">
+            <div class="container">
+                <a class="navbar-brand" th:href="@{/}">MEG-Spa</a>
+                <a class="btn btn-spa" th:href="@{/reservas/nueva}">
+                    Reservar turno
+                </a>
+            </div>
+        </nav>
+
+        <header class="cabecera-masajes">
+            <div class="container text-center">
+                <h1>Nuestros tratamientos</h1>
+                <p class="lead mb-0">
+                    Elegí el masaje que mejor se adapte a vos.
+                </p>
+            </div>
+        </header>
+
+        <main class="seccion fondo-lavanda">
+            <div class="container">
+
+                <div class="alert alert-light text-center"
+                     th:if="${#lists.isEmpty(masajes)}">
+                    Por el momento no hay tratamientos disponibles.
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-4"
+                         th:each="masaje : ${masajes}">
+
+                        <article class="card tratamiento">
+                            <div class="card-body p-4 d-flex flex-column">
+                                <h2 class="card-title"
+                                    th:text="${masaje.nombre}">
+                                    Masaje relajante
+                                </h2>
+
+                                <p class="card-text"
+                                   th:text="${masaje.descripcion}">
+                                    Descripción del tratamiento.
+                                </p>
+
+                                <p class="mb-2">
+                                    <strong>Duración:</strong>
+                                    <span th:text="${masaje.duracionMinutos}"></span>
+                                    minutos
+                                </p>
+
+                                <p class="precio"
+                                   th:text="${'$ ' + #numbers.formatDecimal(masaje.precio, 1, 2, 'COMMA')}">
+                                    $ 0,00
+                                </p>
+
+                                <a class="btn btn-spa mt-auto align-self-start"
+                                   th:href="@{/reservas/nueva}">
+                                    Solicitar turno
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <section class="seccion">
+            <div class="container">
+                <h2 class="seccion-titulo text-center mb-5">Un espacio para desconectar</h2>
+
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <img class="galeria-img" th:src="@{/images/galeria-1.jpg}"
+                             alt="Sala de masajes con velas y toallas">
+                    </div>
+                    <div class="col-md-4">
+                        <img class="galeria-img" th:src="@{/images/galeria-2.jpg}"
+                             alt="Piedras, flores y aceites esenciales">
+                    </div>
+                    <div class="col-md-4">
+                        <img class="galeria-img" th:src="@{/images/galeria-3.jpg}"
+                             alt="Ambiente de spa relajante">
+                    </div>
+                </div>
+
+                <div class="text-center mt-5">
+                    <a class="btn btn-spa-borde" th:href="@{/}">
+                        Volver al inicio
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer-spa text-center py-4">
+            <p class="mb-0">MEG-Spa Turnos · Sistema de reservas de masajes</p>
+        </footer>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>

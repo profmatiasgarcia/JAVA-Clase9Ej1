@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Reservar turno | MEG-Spa</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Nunito+Sans:wght@400;600;700&display=swap"
+              rel="stylesheet">
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+              rel="stylesheet">
+        <link rel="stylesheet" th:href="@{/css/estilos.css}">
+    </head>
+    <body>
+
+        <nav class="navbar navbar-expand-lg navbar-spa sticky-top">
+            <div class="container">
+                <a class="navbar-brand" th:href="@{/}">MEG-Spa</a>
+                <a class="btn btn-spa-borde" th:href="@{/masajes}">
+                    Tratamientos
+                </a>
+            </div>
+        </nav>
+
+        <header class="banner-login">
+            <div class="container text-center">
+                <h1>Solicitar un turno</h1>
+                <p class="lead mb-0">Elegí tu masaje, tu profesional y el horario.</p>
+            </div>
+        </header>
+
+        <main class="login-contenedor">
+            <div class="container" style="max-width: 720px">
+                <div class="login-card">
+
+                    <div class="alert alert-danger"
+                         th:if="${error != null}"
+                         th:text="${error}">
+                        No se pudo crear la reserva.
+                    </div>
+
+                    <form th:action="@{/reservas}" method="post">
+
+                        <div class="mb-3">
+                            <label for="tipoMasajeId" class="form-label">
+                                Tipo de masaje
+                            </label>
+                            <select class="form-select"
+                                    id="tipoMasajeId"
+                                    name="tipoMasajeId"
+                                    required>
+                                <option value="">Seleccioná un tratamiento</option>
+                                <option th:each="masaje : ${masajes}"
+                                        th:value="${masaje.id}"
+                                        th:text="${masaje.nombre + ' - ' +
+                                        masaje.duracionMinutos + ' min - $ ' +
+                                        #numbers.formatDecimal(masaje.precio, 1, 2, 'COMMA')}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="masajistaId" class="form-label">
+                                Masajista
+                            </label>
+                            <select class="form-select"
+                                    id="masajistaId"
+                                    name="masajistaId"
+                                    required>
+                                <option value="">Seleccioná un profesional</option>
+                                <option th:each="masajista : ${masajistas}"
+                                        th:value="${masajista.id}"
+                                        th:text="${masajista.nombre}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="fechaHoraInicio" class="form-label">
+                                Fecha y hora de inicio
+                            </label>
+                            <input type="datetime-local"
+                                   class="form-control"
+                                   id="fechaHoraInicio"
+                                   name="fechaHoraInicio"
+                                   required>
+                        </div>
+
+                        <div class="d-flex flex-wrap gap-2">
+                            <button type="submit" class="btn btn-spa">
+                                Solicitar reserva
+                            </button>
+
+                            <a class="btn btn-spa-borde" th:href="@{/}">
+                                Cancelar
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer-spa text-center py-4">
+            <p class="mb-0">MEG-Spa Turnos · Sistema de reservas de masajes</p>
+        </footer>
+
+    </body>
+</html>

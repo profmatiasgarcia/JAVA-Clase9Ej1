@@ -1,0 +1,409 @@
+/* ==========================================================
+   MEG-Spa · estilos.css
+   Ubicación: src/main/resources/static/css/estilos.css
+   ========================================================== */
+
+:root {
+    --spa-salvia: #ecd7f5;
+    --spa-salvia-oscuro: #896994;
+    --spa-gris-claro: #E0E0E0;
+    --spa-rosa: #f6dde0;
+    --spa-lavanda: #e3dcf1;
+    --spa-arena: #fbf7f3;
+    --spa-tinta: #382747;
+    --spa-tinta-suave: #755e8c;
+    --spa-radio: 1.25rem;
+
+    --bs-body-font-family: "Nunito Sans", system-ui, sans-serif;
+    --bs-body-color: var(--spa-tinta);
+    --bs-body-bg: var(--spa-arena);
+}
+
+body {
+    font-family: var(--bs-body-font-family);
+    color: var(--spa-tinta);
+    background-color: var(--spa-arena);
+    line-height: 1.7;
+}
+
+h1, h2, h3, h4, .navbar-brand {
+    font-family: "Marcellus", Georgia, serif;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+}
+
+a:focus-visible,
+.btn:focus-visible,
+.navbar-toggler:focus-visible {
+    outline: 3px solid var(--spa-salvia-oscuro);
+    outline-offset: 3px;
+}
+
+/* ---------- Navbar ---------- */
+.navbar-spa {
+    background-color: rgba(251, 247, 243, 0.92);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--spa-salvia);
+}
+
+.navbar-spa .navbar-brand {
+    font-size: 1.6rem;
+    color: var(--spa-tinta);
+}
+
+.navbar-spa .nav-link {
+    color: var(--spa-tinta-suave);
+    padding-inline: 1rem;
+}
+
+.navbar-spa .nav-link:hover {
+    color: var(--spa-tinta);
+}
+
+/* ---------- Botones ---------- */
+.btn-spa {
+    background-color: var(--spa-salvia-oscuro);
+    border: 2px solid var(--spa-salvia-oscuro);
+    color: #fff;
+    border-radius: 999px;
+    padding: 0.75rem 2rem;
+}
+
+.btn-spa:hover {
+    background-color: var(--spa-tinta);
+    border-color: var(--spa-tinta);
+    color: #fff;
+}
+
+.btn-spa-borde {
+    background-color: rgba(255, 255, 255, 0.7);
+    border: 2px solid var(--spa-salvia-oscuro);
+    color: var(--spa-tinta);
+    border-radius: 999px;
+    padding: 0.75rem 2rem;
+}
+
+.btn-spa-borde:hover {
+    background-color: var(--spa-salvia-oscuro);
+    color: #fff;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+    position: relative;
+    min-height: 78vh;
+    display: flex;
+    align-items: center;
+    background:
+        linear-gradient(105deg,
+            rgba(251, 247, 243, 0.94) 0%,
+            rgba(246, 221, 224, 0.80) 45%,
+            rgba(207, 227, 214, 0.55) 100%),
+        url("../images/hero.jpg") center / cover no-repeat,
+        linear-gradient(135deg, var(--spa-rosa), var(--spa-salvia));
+}
+
+.hero h1 {
+    font-size: clamp(2.4rem, 6vw, 4.2rem);
+    line-height: 1.1;
+    color: var(--spa-tinta);
+}
+
+.hero .lead {
+    max-width: 34rem;
+    color: var(--spa-tinta-suave);
+}
+
+/* ---------- Secciones ---------- */
+.seccion {
+    padding-block: 5rem;
+}
+
+.seccion-titulo {
+    font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+}
+
+.seccion-texto {
+    max-width: 38rem;
+    margin-inline: auto;
+    color: var(--spa-tinta-suave);
+}
+
+.fondo-lavanda {
+    background-color: var(--spa-lavanda);
+}
+
+.fondo-salvia {
+    background-color: var(--spa-salvia);
+}
+
+/* ---------- Tarjetas de tratamientos ---------- */
+.tratamiento {
+    border: 0;
+    border-radius: var(--spa-radio);
+    overflow: hidden;
+    background-color: #fff;
+    box-shadow: 0 10px 30px rgba(111, 154, 133, 0.18);
+    height: 100%;
+}
+
+.tratamiento img {
+    height: 220px;
+    width: 100%;
+    object-fit: cover;
+    background-color: var(--spa-salvia);
+}
+
+.tratamiento .card-title {
+    font-family: "Marcellus", Georgia, serif;
+    font-size: 1.3rem;
+}
+
+.tratamiento .card-text {
+    color: var(--spa-tinta-suave);
+}
+
+.tratamiento a {
+    color: var(--spa-gris-claro);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.tratamiento a:hover {
+    color: var(--spa-tinta);
+    text-decoration: underline;
+}
+
+/* ---------- Pasos para reservar ---------- */
+.paso {
+    background-color: rgba(255, 255, 255, 0.65);
+    border-radius: var(--spa-radio);
+    padding: 1.75rem;
+    height: 100%;
+}
+
+.paso h3 {
+    font-size: 1.2rem;
+}
+
+/* ---------- Banner final ---------- */
+.banner-reserva {
+    border-radius: calc(var(--spa-radio) * 1.5);
+    padding: 3.5rem 1.5rem;
+    background:
+        linear-gradient(120deg, rgba(246, 221, 224, 0.92), rgba(227, 220, 241, 0.88)),
+        url("../images/banner.jpg") center / cover no-repeat;
+}
+
+/* ---------- Footer ---------- */
+.footer-spa {
+    background-color: var(--spa-lavanda);
+    color: var(--spa-tinta);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* ---------- Página de tratamientos ---------- */
+.cabecera-masajes {
+    padding-block: 5rem;
+    background:
+        linear-gradient(105deg,
+            rgba(251, 247, 243, 0.92) 0%,
+            rgba(246, 221, 224, 0.78) 50%,
+            rgba(207, 227, 214, 0.55) 100%),
+        url("../images/hero.jpg") center / cover no-repeat,
+        linear-gradient(135deg, var(--spa-rosa), var(--spa-salvia));
+}
+
+.cabecera-masajes h1 {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+}
+
+.cabecera-masajes .lead {
+    color: var(--spa-tinta-suave);
+}
+
+.tratamiento .precio {
+    font-family: "Marcellus", Georgia, serif;
+    font-size: 1.4rem;
+    color: var(--spa-salvia-oscuro);
+}
+
+.galeria-img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    border-radius: var(--spa-radio);
+    background-color: var(--spa-salvia);
+    box-shadow: 0 10px 30px rgba(111, 154, 133, 0.18);
+}
+
+/* ---------- Login ---------- */
+.banner-login {
+    padding-block: 5rem 7rem;
+    background:
+        linear-gradient(105deg,
+            rgba(251, 247, 243, 0.90) 0%,
+            rgba(246, 221, 224, 0.75) 50%,
+            rgba(207, 227, 214, 0.55) 100%),
+        url("../images/hero.jpg") center / cover no-repeat,
+        linear-gradient(135deg, var(--spa-rosa), var(--spa-salvia));
+}
+
+.banner-login h1 {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+}
+
+.banner-login .lead {
+    color: var(--spa-tinta-suave);
+}
+
+.login-contenedor {
+    padding-bottom: 4rem;
+}
+
+.login-card {
+    margin-top: -4rem;
+    background-color: #fff;
+    border-radius: var(--spa-radio);
+    padding: 2.25rem;
+    box-shadow: 0 10px 30px rgba(111, 154, 133, 0.22);
+}
+
+.login-card .form-control {
+    border-radius: 0.75rem;
+    border-color: var(--spa-salvia);
+    padding: 0.7rem 1rem;
+}
+
+.login-card .form-control:focus {
+    border-color: var(--spa-salvia-oscuro);
+    box-shadow: 0 0 0 0.25rem rgba(111, 154, 133, 0.25);
+}
+
+.enlace-spa {
+    color: var(--spa-salvia-oscuro);
+    font-weight: 700;
+}
+
+.enlace-spa:hover {
+    color: var(--spa-tinta);
+}
+
+.login-card .form-select {
+    border-radius: 0.75rem;
+    border-color: var(--spa-salvia);
+    padding: 0.7rem 1rem;
+}
+
+.login-card .form-select:focus {
+    border-color: var(--spa-salvia-oscuro);
+    box-shadow: 0 0 0 0.25rem rgba(111, 154, 133, 0.25);
+}
+
+/* ---------- Tabla de reservas ---------- */
+.tabla-spa {
+    --bs-table-bg: transparent;
+    --bs-table-hover-bg: rgba(207, 227, 214, 0.35);
+    color: var(--spa-tinta);
+}
+
+.tabla-spa thead th {
+    background-color: var(--spa-salvia);
+    color: var(--spa-tinta);
+    font-weight: 700;
+    border-bottom: 0;
+    white-space: nowrap;
+}
+
+.tabla-spa thead th:first-child {
+    border-top-left-radius: 0.75rem;
+}
+
+.tabla-spa thead th:last-child {
+    border-top-right-radius: 0.75rem;
+}
+
+.tabla-spa tbody td {
+    border-color: var(--spa-lavanda);
+    padding-block: 0.9rem;
+}
+
+.badge-spa {
+    background-color: var(--spa-lavanda);
+    color: var(--spa-tinta);
+    border-radius: 999px;
+    padding: 0.45rem 0.9rem;
+    font-weight: 700;
+}
+
+/* ---------- Panel de administración ---------- */
+.tabla-spa .acciones {
+    min-width: 230px;
+}
+
+.badge-spa.estado-pendiente {
+    background-color: #fbeccb;
+    color: #7a5a1c;
+}
+
+.badge-spa.estado-confirmada {
+    background-color: var(--spa-lavanda);
+    color: var(--spa-tinta);
+}
+
+.badge-spa.estado-realizada {
+    background-color: var(--spa-salvia);
+    color: var(--spa-tinta);
+}
+
+.badge-spa.estado-cancelada {
+    background-color: var(--spa-rosa);
+    color: #8a3f4b;
+}
+
+.btn-spa-peligro {
+    background-color: var(--spa-rosa);
+    border: 2px solid var(--spa-rosa);
+    color: #8a3f4b;
+    border-radius: 999px;
+    font-weight: 600;
+}
+
+.btn-spa-peligro:hover {
+    background-color: #e9a9b3;
+    border-color: #e9a9b3;
+    color: #5f2530;
+}
+
+.btn-sm.btn-spa,
+.btn-sm.btn-spa-borde,
+.btn-sm.btn-spa-peligro {
+    padding: 0.35rem 1rem;
+}
+/* ---------- Mensajes (éxito, error, info) en lila ---------- */
+.alert-success,
+.alert-danger,
+.alert-info {
+
+    background-color: var(--spa-salvia);
+    border: 0;
+    border-left: 5px solid #b9a7e0;
+    border-radius: 0.75rem;
+    color: var(--spa-tinta);
+}
+
+.alert .btn-close:focus {
+    box-shadow: 0 0 0 0.2rem rgba(185, 167, 224, 0.5);
+}
+/* ---------- Tratamientos ---------- */
+
+.badge-spa.estado-inactivo {
+    background-color: #ece9e4;
+    color: var(--spa-tinta-suave);
+}
